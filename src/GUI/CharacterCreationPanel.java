@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+// Panel for creating new characters. Handles user input, class/weapon selection, and stat assignment.
+// Provides UI for entering name, selecting class and weapon, and randomizing stats.
 public class CharacterCreationPanel extends JPanel {
 
     private JLabel classImageLabel;
@@ -33,38 +35,7 @@ public class CharacterCreationPanel extends JPanel {
     private Player currentPlayer;
     private Weapon currentWeapon;
 
-    private void setClassDefaults(String className) {
-        selectClassLabel.setText("");
-        switch (className) {
-            case "Warrior":
-                hpField.setText("100");
-                defenseField.setText("60");
-                agilityField.setText("40");
-                baseAttackField.setText("20");
-                break;
-            case "Wizard":
-                hpField.setText("70");
-                defenseField.setText("30");
-                agilityField.setText("80");
-                baseAttackField.setText("25");
-                break;
-            case "Cleric":
-                hpField.setText("90");
-                defenseField.setText("50");
-                agilityField.setText("50");
-                baseAttackField.setText("18");
-                break;
-        }
-    }
-
-    private void updateWeaponStats(Weapon weapon) {
-        selectWeaponLabel.setText("");
-        currentWeapon = weapon;
-        attackModField.setText(String.valueOf(weapon.getAttackModiifier()));
-        weightField.setText(String.valueOf(weapon.getWeight()));
-    }
-
-
+    // Constructor: sets up the UI components for character creation
     public CharacterCreationPanel(GameFrame frame) {
         setLayout(null);
         setBackground(new Color(153, 153, 204));
@@ -277,6 +248,40 @@ public class CharacterCreationPanel extends JPanel {
             frame.showPanel(new BattleSummaryPanel(frame, currentPlayer, monster));
         });
     }
+
+    // Sets default stats for the selected class
+    private void setClassDefaults(String className) {
+        selectClassLabel.setText("");
+        switch (className) {
+            case "Warrior":
+                hpField.setText("100");
+                defenseField.setText("60");
+                agilityField.setText("40");
+                baseAttackField.setText("20");
+                break;
+            case "Wizard":
+                hpField.setText("70");
+                defenseField.setText("30");
+                agilityField.setText("80");
+                baseAttackField.setText("25");
+                break;
+            case "Cleric":
+                hpField.setText("90");
+                defenseField.setText("50");
+                agilityField.setText("50");
+                baseAttackField.setText("18");
+                break;
+        }
+    }
+
+    // Updates weapon stats display when a weapon is selected
+    private void updateWeaponStats(Weapon weapon) {
+        selectWeaponLabel.setText("");
+        currentWeapon = weapon;
+        attackModField.setText(String.valueOf(weapon.getAttackModiifier()));
+        weightField.setText(String.valueOf(weapon.getWeight()));
+    }
+
 
     // randomize stats and fill text fields
     private void rerollStats(ActionEvent e) {

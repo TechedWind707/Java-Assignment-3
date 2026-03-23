@@ -1,9 +1,14 @@
 package Classes;
 
-public class Player extends Character {
+// Player.java
+// Abstract base class for player-controlled characters.
+// Defines player-specific attributes and methods.
+
+public abstract class Player extends Character {
 
     private Weapon weapon;
 
+    // Constructor: initializes player stats
     public Player(String name, int baseAttack, int defense, int agility, int hitPoints) {
         super(name, baseAttack, defense, agility, hitPoints);
     }

@@ -6,7 +6,8 @@ public abstract class Character {
 
     //Declare properties of ANY character (Player or Monster)
     String name;
-//    private Weapon weapon;
+
+    // Character's stats
     private int baseAttack;
     private int defense;
     private int agility;
@@ -21,6 +22,7 @@ public abstract class Character {
     }
 
 //    Getters & Setters:
+    // Returns the character's name
     public String getName() {
         return name;
     }
@@ -29,6 +31,7 @@ public abstract class Character {
         this.name = name;
     }
 
+    // Returns the character's health
     public int getBaseAttack() {
         return baseAttack;
     }
@@ -37,6 +40,7 @@ public abstract class Character {
         this.baseAttack = baseAttack;
     }
 
+    // Returns the character's attack value
     public int getDefense() {
         return defense;
     }
@@ -45,6 +49,7 @@ public abstract class Character {
         this.defense = defense;
     }
 
+    // Returns the character's defense value
     public int getAgility() {
         return agility;
     }
@@ -53,6 +58,7 @@ public abstract class Character {
         this.agility = agility;
     }
 
+    // Returns the character's weapon
     public int getHitPoints() {
         return hitPoints;
     }

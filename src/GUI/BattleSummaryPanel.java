@@ -4,8 +4,11 @@ import Classes.*;
 import javax.swing.*;
 import java.awt.*;
 
+// Panel for displaying the summary of a battle, including player and monster stats and results.
+// Provides a button to play again and return to character creation.
 public class BattleSummaryPanel extends JPanel {
 
+    // Constructor: sets up the summary display with player and monster info
     public BattleSummaryPanel(GameFrame frame, Player player, Monster monster) {
         setLayout(null);
         setBackground(new Color(153, 153, 204));
