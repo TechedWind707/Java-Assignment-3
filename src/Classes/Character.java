@@ -4,7 +4,7 @@ package Classes;
 
 public abstract class Character {
 
-    //Declare properties of ANY shape
+    //Declare properties of ANY character (Player or Monster)
     String name;
     private Weapon weapon;
     private int baseAttack;
@@ -12,7 +12,7 @@ public abstract class Character {
     private int agility;
     private int hitPoints;
 
-    public Character(String name, int baseAttack, int weight, int agility, int hitPoints) {
+    public Character(String name, int baseAttack, int defense, int agility, int hitPoints) {
         this.name = name;
         this.baseAttack = baseAttack;
         this.defense = defense;
@@ -74,6 +74,8 @@ public abstract class Character {
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
     }
+
+//    public abstract String getWeaponInformString();
 
     //Define a getCharacterInformString() method, to be inherited by subclasses
     public String getCharacterInformString() {
