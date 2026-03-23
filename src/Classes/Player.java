@@ -2,10 +2,19 @@ package Classes;
 
 public class Player extends Character {
 
+    private Weapon weapon;
+
     public Player(String name, int baseAttack, int defense, int agility, int hitPoints) {
         super(name, baseAttack, defense, agility, hitPoints);
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
 
     public String getWeaponInformString() {
         return "Weapons are used to increase the attack of the player. They have different attack modifiers and weights.";

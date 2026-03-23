@@ -42,9 +42,6 @@ public class BattleSummaryPanel extends JPanel {
         playerPic.setBounds(80, 100, 150, 150);
         add(playerPic);
 
-
-        // You can swap this for different images per class if you want
-        playerIcon = new ImageIcon(getClass().getResource("/Images/fighter.png"));
         playerPic = new JLabel(playerIcon);
         playerPic.setBounds(80, 100, 150, 150);
         add(playerPic);

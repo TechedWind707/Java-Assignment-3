@@ -7,7 +7,7 @@ public class Dagger extends Weapon {
 
     //Constructors
     public Dagger() {
-
+        // Constructor for Dagger, sets name and attack bonus
         super(3,5,"Dagger");
         //Set image for this weapon
         daggerPic = new ImageIcon(this.getClass().getResource("/Images/dagger.png"));

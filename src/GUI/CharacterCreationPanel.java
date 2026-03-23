@@ -280,10 +280,10 @@ public class CharacterCreationPanel extends JPanel {
 
     // randomize stats and fill text fields
     private void rerollStats(ActionEvent e) {
-        int hp = 70 + (int)(Math.random() * 31);
-        int def = 30 + (int)(Math.random() * 31);
-        int agi = 30 + (int)(Math.random() * 31);
-        int atk = 10 + (int)(Math.random() * 11);
+        int hp = 70 + (int) (Math.random() * 31);
+        int def = 30 + (int) (Math.random() * 31);
+        int agi = 30 + (int) (Math.random() * 31);
+        int atk = 10 + (int) (Math.random() * 11);
 
         hpField.setText(String.valueOf(hp));
         defenseField.setText(String.valueOf(def));
@@ -307,17 +307,14 @@ public class CharacterCreationPanel extends JPanel {
             currentPlayer = new Cleric(name);
         }
 
-        if (daggerBtn.isSelected()) {
-            currentWeapon = new Dagger();
-        } else if (swordBtn.isSelected()) {
-            currentWeapon = new Sword();
-        } else {
-            currentWeapon = new Hammer();
+        // ensure player stats match whatever is in the text fields
+        currentPlayer.setHitPoints(hp);
+        currentPlayer.setDefense(defense);
+        currentPlayer.setAgility(agility);
+        currentPlayer.setBaseAttack(baseAttack);
+
+        if (currentWeapon != null) {
+            currentPlayer.setWeapon(currentWeapon);
         }
-
-        currentPlayer.setWeapon(currentWeapon);
-
-        attackModField.setText(String.valueOf(currentWeapon.getAttackModiifier()));
-        weightField.setText(String.valueOf(currentWeapon.getWeight()));
     }
 }

@@ -6,7 +6,7 @@ public abstract class Character {
 
     //Declare properties of ANY character (Player or Monster)
     String name;
-    private Weapon weapon;
+//    private Weapon weapon;
     private int baseAttack;
     private int defense;
     private int agility;
@@ -18,12 +18,6 @@ public abstract class Character {
         this.defense = defense;
         this.agility = agility;
         this.hitPoints = hitPoints;
-//        int[] stats = ChoosePanel.getTextFieldsData();
-//        this.setBaseAttack(stats[0]);
-
-//        this.setDefense(stats[1]);
-//        this.setAgility(stats[2]);
-//        this.setHitPoints(stats[3]);
     }
 
 //    Getters & Setters:
@@ -33,14 +27,6 @@ public abstract class Character {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
     }
 
     public int getBaseAttack() {
@@ -75,7 +61,6 @@ public abstract class Character {
         this.hitPoints = hitPoints;
     }
 
-//    public abstract String getWeaponInformString();
 
     //Define a getCharacterInformString() method, to be inherited by subclasses
     public String getCharacterInformString() {
@@ -86,9 +71,13 @@ public abstract class Character {
                 "\nBase Attack: " + baseAttack;
     }
 
-    @Override
+//    @Override
     public String toString() {
-        return "My name is " + name + ". My weapon is " + (weapon != null ? weapon.getWeaponInformString() : "none") + ".";
+        return "My name is " + name + ")n" +
+                "HP: " + hitPoints +
+                "\nDefense: " + defense +
+                "\nAgility: " + agility +
+                "\nBase Attack: " + baseAttack;
     }
     //I'm literally walking in the blind rn and I have just 2 hours to finish this up
 

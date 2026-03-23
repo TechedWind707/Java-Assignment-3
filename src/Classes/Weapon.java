@@ -35,7 +35,7 @@ public abstract class Weapon {
         this.weight = weight;
     }
 
-    //absstract because we don't want to have generic weapons
+    //abstract because we don't want to have generic weapons
     public abstract String getWeaponInformString();
 
 }
