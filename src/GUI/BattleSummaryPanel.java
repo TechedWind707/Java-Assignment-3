@@ -18,13 +18,34 @@ public class BattleSummaryPanel extends JPanel {
         add(title);
 
         // Player info
-        JLabel playerLabel = new JLabel("Player: " + player.getName());
-        playerLabel.setBounds(80, 70, 200, 25);
+        String className = player.getClass().getSimpleName();
+
+        JLabel playerLabel = new JLabel("Player: " + player.getName() + " (" + className + ")");
+        playerLabel.setBounds(80, 70, 250, 25);
         add(playerLabel);
 
-        // You can swap this for different images per class if you want
-        ImageIcon playerIcon = new ImageIcon(getClass().getResource("/Images/fighter.png"));
+// choose image based on class
+        ImageIcon playerIcon;
+        switch (className) {
+            case "Wizard":
+                playerIcon = new ImageIcon(getClass().getResource("/Images/wizard.png"));
+                break;
+            case "Cleric":
+                playerIcon = new ImageIcon(getClass().getResource("/Images/cleric.png"));
+                break;
+            default: // Warrior
+                playerIcon = new ImageIcon(getClass().getResource("/Images/fighter.png"));
+                break;
+        }
+
         JLabel playerPic = new JLabel(playerIcon);
+        playerPic.setBounds(80, 100, 150, 150);
+        add(playerPic);
+
+
+        // You can swap this for different images per class if you want
+        playerIcon = new ImageIcon(getClass().getResource("/Images/fighter.png"));
+        playerPic = new JLabel(playerIcon);
         playerPic.setBounds(80, 100, 150, 150);
         add(playerPic);
 
@@ -33,7 +54,7 @@ public class BattleSummaryPanel extends JPanel {
         monsterLabel.setBounds(480, 70, 200, 25);
         add(monsterLabel);
 
-        ImageIcon monsterIcon = new ImageIcon(getClass().getResource("/Images/gazer.png"));
+        ImageIcon monsterIcon = new ImageIcon(getClass().getResource("/Images/monster.jpg"));
         JLabel monsterPic = new JLabel(monsterIcon);
         monsterPic.setBounds(480, 100, 150, 150);
         add(monsterPic);
