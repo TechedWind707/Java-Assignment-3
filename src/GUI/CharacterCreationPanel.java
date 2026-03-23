@@ -11,6 +11,8 @@ public class CharacterCreationPanel extends JPanel {
     private JLabel weaponImageLabel;
 
     private JTextField nameField;
+    private JLabel selectClassLabel;
+    private JLabel selectWeaponLabel;
 
     private JRadioButton warriorBtn;
     private JRadioButton wizardBtn;
@@ -30,6 +32,38 @@ public class CharacterCreationPanel extends JPanel {
 
     private Player currentPlayer;
     private Weapon currentWeapon;
+
+    private void setClassDefaults(String className) {
+        selectClassLabel.setText("");
+        switch (className) {
+            case "Warrior":
+                hpField.setText("100");
+                defenseField.setText("60");
+                agilityField.setText("40");
+                baseAttackField.setText("20");
+                break;
+            case "Wizard":
+                hpField.setText("70");
+                defenseField.setText("30");
+                agilityField.setText("80");
+                baseAttackField.setText("25");
+                break;
+            case "Cleric":
+                hpField.setText("90");
+                defenseField.setText("50");
+                agilityField.setText("50");
+                baseAttackField.setText("18");
+                break;
+        }
+    }
+
+    private void updateWeaponStats(Weapon weapon) {
+        selectWeaponLabel.setText("");
+        currentWeapon = weapon;
+        attackModField.setText(String.valueOf(weapon.getAttackModiifier()));
+        weightField.setText(String.valueOf(weapon.getWeight()));
+    }
+
 
     public CharacterCreationPanel(GameFrame frame) {
         setLayout(null);
@@ -80,7 +114,7 @@ public class CharacterCreationPanel extends JPanel {
         add(wizardBtn);
         add(clericBtn);
 
-        JLabel selectClassLabel = new JLabel("Select a Class");
+        selectClassLabel = new JLabel("Select a Class");
         selectClassLabel.setBounds(210, 190, 150, 25);
         add(selectClassLabel);
 
@@ -89,12 +123,21 @@ public class CharacterCreationPanel extends JPanel {
         classImageLabel.setBounds(250, 150, 150, 150);
         add(classImageLabel);
 
-        warriorBtn.addActionListener(e ->
-                classImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/fighter.png"))));
-        wizardBtn.addActionListener(e ->
-                classImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/wizard.png"))));
-        clericBtn.addActionListener(e ->
-                classImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/dwarf.png"))));
+        warriorBtn.addActionListener(e -> {
+            classImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/fighter.png")));
+            setClassDefaults("Warrior");
+        });
+
+        wizardBtn.addActionListener(e -> {
+            classImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/wizard.png")));
+            setClassDefaults("Wizard");
+        });
+
+        clericBtn.addActionListener(e -> {
+            classImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/dwarf.png")));
+            setClassDefaults("Cleric");
+        });
+
 
         // Character stats labels
         JLabel statsLabel = new JLabel("Character Stats");
@@ -121,6 +164,12 @@ public class CharacterCreationPanel extends JPanel {
         defenseField = new JTextField();
         agilityField = new JTextField();
         baseAttackField = new JTextField();
+
+        hpField.setEditable(false);
+        defenseField.setEditable(false);
+        agilityField.setEditable(false);
+        baseAttackField.setEditable(false);
+
 
         hpField.setBounds(560, 160, 80, 25);
         defenseField.setBounds(560, 190, 80, 25);
@@ -165,7 +214,7 @@ public class CharacterCreationPanel extends JPanel {
         add(swordBtn);
         add(hammerBtn);
 
-        JLabel selectWeaponLabel = new JLabel("Select a Weapon");
+        selectWeaponLabel = new JLabel("Select a Weapon");
         selectWeaponLabel.setBounds(210, 390, 150, 25);
         add(selectWeaponLabel);
 
@@ -174,12 +223,21 @@ public class CharacterCreationPanel extends JPanel {
         weaponImageLabel.setBounds(250, 360, 150, 150);
         add(weaponImageLabel);
 
-        daggerBtn.addActionListener(e ->
-                weaponImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/dagger.png"))));
-        swordBtn.addActionListener(e ->
-                weaponImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/sword.png"))));
-        hammerBtn.addActionListener(e ->
-                weaponImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/hammer.png"))));
+        daggerBtn.addActionListener(e -> {
+            weaponImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/dagger.png")));
+            updateWeaponStats(new Dagger());
+        });
+
+        swordBtn.addActionListener(e -> {
+            weaponImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/sword.png")));
+            updateWeaponStats(new Sword());
+        });
+
+        hammerBtn.addActionListener(e -> {
+            weaponImageLabel.setIcon(new ImageIcon(getClass().getResource("/Images/hammer.png")));
+            updateWeaponStats(new Hammer());
+        });
+
 
         // Weapon stats
         JLabel weaponStatsLabel = new JLabel("Weapon Stats");
@@ -198,6 +256,8 @@ public class CharacterCreationPanel extends JPanel {
 
         attackModField = new JTextField();
         weightField = new JTextField();
+        attackModField.setEditable(false);
+        weightField.setEditable(false);
 
         attackModField.setBounds(560, 360, 80, 25);
         weightField.setBounds(560, 390, 80, 25);
